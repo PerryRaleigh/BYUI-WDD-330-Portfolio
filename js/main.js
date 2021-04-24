@@ -14,5 +14,5 @@ const links = [
   }
 }
 
-weeksList.buildWeeks.call();
-
+var makeTheList = weeksList.buildWeeks.call();
+document.getElementById("myWork").innerHTML = makeTheList;
