@@ -8,7 +8,7 @@ const links = [
     function buildWeeks() {
     var oList = document.getElementById("weeksList");
     for (var i = 0; i < links.length; i++) {
-      oList.innerHTML += "<li><a href='" + links[i].url +"</a></li>";
+      oList.innerHTML += "<li><a href='" + links[i].url +"'>" + links[i].label + "</a></li>";
   }
 }
 buildWeeks();
