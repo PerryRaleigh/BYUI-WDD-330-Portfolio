@@ -14,5 +14,4 @@ const links = [
   }
 }
 
-var makeTheList = weeksList.buildWeeks.call();
-document.getElementById("myWork").innerHTML = makeTheList;
+document.getElementById("myWork").innerHTML = weeksList;
