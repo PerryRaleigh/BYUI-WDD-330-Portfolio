@@ -11,5 +11,4 @@ const links = [
       oList.innerHTML += "<li><a href='" + links[i].url +"</a></li>";
   }
 }
-
-document.getElementById("myWork").innerHTML = buildWeeks();
+buildWeeks();
