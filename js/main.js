@@ -5,11 +5,14 @@ const links = [
     }
   ]
 
-  buildWeeks;
-  
-  function buildWeeks() {
-    var oList = document.getElementById("weeksOL");
-    for (var i = 0; i < links.length; i++) {
-      oList.innerHTML += "<li><a href='" + links[i].url +"</a></li>";
+  var weeksList = { 
+    buildWeeks: function() {
+      var oList = document.getElementById("weeksOL");
+      for (var i = 0; i < links.length; i++) {
+        oList.innerHTML += "<li><a href='" + links[i].url +"</a></li>";
     }
   }
+}
+
+weeksList.buildWeeks.call();
+
