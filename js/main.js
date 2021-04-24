@@ -12,4 +12,4 @@ const links = [
   }
 }
 
-document.getElementById("myWork").innerHTML = buildWeeks;
+document.getElementById("myWork").innerHTML = buildWeeks();
