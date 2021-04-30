@@ -21,9 +21,9 @@
 
     <script>
         function addTwoNumbers() {
-            let numOneToAdd = document.getElementById("numOneToAdd").value;
-            let numTwoToAdd = document.getElementById("numTwoToAdd").value;
-            let theSumOfNum = Number(numOneToAdd) + Number(numTwoToAdd);
+            let numOneToAdd = document.getElementById("numOneToAdd").valueAsNumber;
+            let numTwoToAdd = document.getElementById("numTwoToAdd").valueAsNumber;
+            let theSumOfNum = numOneToAdd + numTwoToAdd;
 
             document.getElementById("answerOfAdd").innerHTML 
             = "The sum of the two numbers " + numOneToAdd + " and " + numTwoToAdd + " is " + theSumOfNum;
