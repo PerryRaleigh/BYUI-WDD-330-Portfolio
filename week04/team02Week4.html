@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Team Project Week 04</title>
+    <meta charset="utf-8">
+    <meta description="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .board {
+        width: 30em;
+        height: 30em;
+        margin: auto;
+        padding: 1em;
+      }
+      .board td,
+      .board tr {
+        width: 33.3%;
+        height: 33.3%;
+      }
+      .board td {
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        font-size: 5em;
+        text-align: center;
+      }
+      .board td:last-child {
+        border-right: 0;
+      }
+      .board tr:last-child td {
+        border-bottom: 0;
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <div><h1>Team Project Week 04</h1></div>
+        <nav>
+            <div id="winner"></div>
+        </nav>
+    </header>
+    <main>
+        <button onclick="reset()">Reset</button>
+        <table class="board">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </main>
+    <footer>
+        <div><p>Author: Tristin Parker - 2021 - BYUI - <a href="../index.html">Index Link</a></p></div>
+    </footer>
+<script>
+    var board = [];
+    const player1 = "X";
+    const player2 = "O";
+    let turn = "X";
+    let winner;
+    document.querySelectorAll('td').forEach(item => {item.addEventListener('click', play)});
+    console.log("Add Event");
+    const winningCombos = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ];
+
+    function reset(){
+        turn = "X";
+        winner = null;
+        document.querySelectorAll('td').forEach(item => { item.innerHTML = ""});      
+        console.log("Reset");
+        checkWinner();   
+    }
+
+    function play(event){
+        let square = event.target;
+        if(!winner){
+            if(square.innerHTML==""){
+                square.innerHTML = turn;
+                turn = turn === 'X' ? 'O' : 'X';
+            }
+        }
+        winner = getWinner();
+        checkWinner();
+        
+    }
+
+    function getWinner() {
+        board = [];
+        winner = "";
+        document.querySelectorAll('td').forEach(item => { board.push(item.innerHTML)});
+        winningCombos.forEach(function (combo, index) {
+        if (board[combo[0]] && board[combo[0]] === board[combo[1]] && board[combo[0]] === board[combo[2]]) winner = board[combo[0]];
+        });
+        return winner ? winner : board.includes('') ? null : 'T';
+    };
+
+    function checkWinner() {
+        let messages = document.getElementById('winner');
+        if (winner == "X"){
+            messages.innerHTML = "The winner is " + winner +"!"; 
+        }
+        if (winner == "O"){
+            messages.innerHTML = "The winner is " + winner +"!"; 
+        }
+        if (winner == "T") {
+            messages.innerHTML = "The match was a tie!";
+        }
+        console.log("Ran check");
+        if (winner == null) {
+            messages.innerHTML = "It's " + turn + "'s Turn to play";
+        }
+    }
+    
+    checkWinner();
+    reset();
+    
+</script>
+</body>
+</html>
