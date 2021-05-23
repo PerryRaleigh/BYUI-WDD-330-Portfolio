@@ -1,0 +1,128 @@
+/* Simple Todo List CSS */
+
+* {
+  box-sizing: border-box;
+}
+
+.tableBorder {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 3px;
+  vertical-align: top;
+}
+
+/* Text effects */
+.strikeThrough {
+  color: green;
+  text-decoration: line-through;
+}
+.delete {
+	display: none;
+}
+.selected {
+  background-color: steelblue;
+  text-decoration: white;
+}
+
+/* Define widths */
+.wide-100 {
+  width: 100%;
+  vertical-align: top;
+}
+.wide-75 {
+  width: 75%;
+  vertical-align: top;
+}
+.wide-50 {
+  width: 50%;
+  vertical-align: top;
+}
+.wide-25 {
+  width: 25%;
+  vertical-align: top;
+}
+.wide-20 {
+  width: 20%;
+  vertical-align: top;
+}
+
+/* Text indent */
+.text-indent-10 {
+  text-indent: 10px;
+}
+.text-indent-15 {
+  text-indent: 15px;
+}
+.text-indent-20 {
+  text-indent: 20px;
+}
+
+/* Alignment */
+.centered {
+  align-content: center;
+}
+
+/* Padding */
+.pad-right-5 {
+  padding-right: 5%;
+}
+.pad-left-5 {
+  padding-left: 5%;
+}
+.pad-right-10 {
+  padding-right: 10%;
+}
+.pad-left-10 {
+  padding-left: 10%;
+}
+.pad-right-20 {
+  padding-right: 20%;
+}
+.pad-left-20 {
+  padding-left: 20%;
+}
+.pad-right-30 {
+  padding-right: 30%;
+}
+.pad-left-30 {
+  padding-left: 30%;
+}
+
+/* Keep the footer in place */
+.footer
+{
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+    width:100%;
+    padding: 10px;
+    background: rgb(42, 47, 49);
+    font-size: 12px;
+    color:rgb(255, 255, 255);
+}
+
+/* Container for flexboxes */
+.flexboxRow {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create four equal entries in myflexbox */
+.flexboxColumn {
+  flex: 50%;
+  padding: 10px;
+}
+
+/* Media query - on screens that are 992px wide or less, go from four columns to two columns */
+@media screen and (max-width: 992px) {
+  .flexboxColumn {
+    flex: 50%;
+  }
+}
+
+/* Media query - on screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .flexboxRow {
+    flex-direction: column;
+  }
+}
