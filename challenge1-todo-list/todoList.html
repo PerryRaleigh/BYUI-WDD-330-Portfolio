@@ -7,54 +7,41 @@
   <title>Simple Todo List</title>
   <meta name="description" content="Simple Todo List">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script defer src="../js/todoList.js"></script>
-
   <link rel="stylesheet" href="../css/todoList.css">
 </head>
 
-<body>
+<body onload="loadTodoList()">
 
-  <div class="jumbotron pad-left-5">
+  <div class="responsiveHeading pad-left-5">
     <h1>Simple Todo List</h1>
   </div>
 
-  <div class="container-fluid">
     <div class="flexboxRow pad-left-5">
-      <div class="col-lg-10">
+      <div class="flexboxColumn">
         <h3>Add a Todo Item</h3>
-        <input class="wide-20" id="todoCat" list="categories" placeholder="Select existing or type a new category"
-          maxlength="20">
-        <datalist id="categories">
-          <option value="Home Improvement">
-          <option value="Personal">
-          <option value="Honey Do">
-          <option value="Exercise">
-          <option value="Learning">
-        </datalist>
-        <input class="wide-20" id="todoShort" type="text" placeholder="Short description" maxlength="20">
-        <textarea class="wide-25" rows="3" id="todoLong" placeholder="Long description"></textarea>
+        <input class="wide-50" id="todoItem" type="text" placeholder="Todo Item" maxlength="50">
         <input id="addTodo" type="button" value="Add Todo" onclick="addTodo()">
       </div>
     </div>
-    <div class="flexboxRow center-block">
-      <div id="todoList" class="col-lg-2 pad-left-5">
+    <div class="flexboxRow  pad-left-5">
+      <div class="flexboxColumn">
         <h3>Todo Items</h3>
-        <ul id="listItems">
+        <ul id="todoList">
+          <li>
+            <input type="radio" id="all" name="todoView" value="all"> 
+            <label for="all">All</label>
+            <input type="radio" id="active" name="todoView" value="active"> 
+            <label for="active">Active</label>
+            <input type="radio" id="completed" name="todoView" value="completed"> 
+            <label for="completed">Completed</label>
+          </li>
         </ul>
       </div>
-      <div class="col-lg-8">
-        <h3>Todo Item Details</h3>
-        <div id="todoDetails"></div>
-        <p id="showCat">Category: </p>
-        <p id="showDesc">Description:</p>
-      </div>
     </div>
-  </div>
+
   <div class="footer">
-    <p><b>Copyright &copy; 2021 Me</b></p>
+    <p><b>Copyright &copy; 2021 Perry Raleigh</b></p>
   </div>
 
 </body>

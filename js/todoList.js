@@ -1,66 +1,48 @@
 var addButton = document.getElementById("addTodo");
-var category = document.getElementById("todoCat");
-var descShort = document.getElementById("todoShort");
-var descLong = document.getElementById("todoLong");
+var todoItem = document.getElementById("todoItem");
 var todoList = document.getElementById("todoList");
-var showCat = document.getElementById("showCat");
-var showDesc = document.getElementById("showDesc");
-var options = document.getElementById("categories").getElementsByTagName("option");
-var optionVals = [];
+var todoItems = [];
 function addTodo() {
-    if (category.value.length === 0) {
-        alert("Please select or enter a category");
+    if (todoItem.value.length === 0) {
+        alert("Please enter a short description");
     }
     else {
-        if (descShort.value.length === 0) {
-            alert("Please enter a short description");
-        }
-        else {
-            if (descLong.value.length === 0) {
-                descLong = descShort;
-            }
-            getCategoryList();
-            if (!optionVals.find(checkCategory)) {
-                addCategory(category.value);
-            }
-            function checkCategory(optionVal) {
-                return optionVal === category.value;
-            }
-            let newLi = document.createElement("li");
-            let newText = document.createTextNode(descShort.value);
-            newLi.appendChild(newText);
-            todoList.appendChild(newLi);
-            var done = document.createElement("button");
-            done.appendChild(document.createTextNode("Done"));
-            newLi.appendChild(done);
-            done.addEventListener("click", markDone);
-            function markDone() {
-                newLi.classList.toggle("strikeThrough");
-            }
-            var delBtn = document.createElement("button");
-            delBtn.appendChild(document.createTextNode("Delete"));
-            newLi.appendChild(delBtn);
-            delBtn.addEventListener("click", deleteListItem);
-            function deleteListItem() {
-                newLi.classList.add("delete");
-            }
-            newLi.classList.toggle("selected");
-            showCat.innerHTML = "Category: " + category.value;
-            showDesc.innerHTML = "Description: " + descLong.value;
-            clearInput();
-        }
+        var storageLen = localStorage.length.toString();
+        localStorage.setItem(storageLen, todoItem.value);
+        loadTodoList();
+        clearInput();
     }
 }
-function addCategory(toAdd) {
-    alert("Adding category " + toAdd);
-}
-function getCategoryList() {
-    for (let index = 0; index < options.length; index++) {
-        optionVals.push(options[index].value);
-    }
+function loadTodoList() {
+    var newLi;
+    var newText;
+    var newSpan;
+    var done;
+    var todoListLen;
+    Object.keys(localStorage).forEach(function (key) {
+        todoListLen = document.getElementById("todoList").getElementsByTagName("LI").length;
+        newLi = document.createElement("li");
+        newText = document.createTextNode(localStorage.getItem(key));
+        done = document.createElement("button");
+        done.appendChild(document.createTextNode("Done"));
+        done.addEventListener("click", markDone);
+        newSpan = document.createElement("span");
+        newSpan.appendChild(done);
+        newSpan.classList.add("close");
+        newLi.appendChild(newText);
+        newLi.appendChild(newSpan);
+        todoList.insertBefore(newLi, todoList.childNodes[todoListLen - 1]);
+        function markDone() {
+            newLi.classList.toggle("strikeThrough");
+        }
+        function deleteListItem() {
+            newLi.classList.add("delete");
+        }
+    });
 }
 function clearInput() {
-    category.value = "";
-    descShort.value = "";
-    descLong.value = "";
+    todoItem.value = "";
+    todoItem.focus();
+}
+function filterView() {
 }

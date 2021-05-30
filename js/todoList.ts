@@ -1,78 +1,57 @@
 var addButton = document.getElementById("addTodo")!;
-var category: HTMLInputElement = (<HTMLInputElement>document.getElementById("todoCat"));
-var descShort: HTMLInputElement = (<HTMLInputElement>document.getElementById("todoShort"));
-var descLong: HTMLInputElement = (<HTMLInputElement>document.getElementById("todoLong"));
+var todoItem: HTMLInputElement = (<HTMLInputElement>document.getElementById("todoItem"));
 var todoList: HTMLUListElement = (<HTMLUListElement>document.getElementById("todoList"));
-var showCat: HTMLParagraphElement = (<HTMLParagraphElement>document.getElementById("showCat"));
-var showDesc: HTMLParagraphElement = (<HTMLParagraphElement>document.getElementById("showDesc"));
-var options: HTMLCollectionOf<HTMLOptionElement> = document.getElementById("categories")!.getElementsByTagName("option");
-var optionVals: string[] = [];
+var todoItems: HTMLLIElement[] = [];
 
 function addTodo() {
-  if (category.value.length === 0) {
-    alert("Please select or enter a category");
+  if (todoItem.value.length === 0) {
+    alert("Please enter a short description");
   } else {
-    if (descShort.value.length === 0) {
-      alert("Please enter a short description");
-    } else {
-      if (descLong.value.length === 0) {
-        descLong = descShort;
-      }
+    let storageLen: string = localStorage.length.toString();
 
-      getCategoryList();
+    localStorage.setItem(storageLen, todoItem.value);
+    loadTodoList();
+    clearInput();
+  }
+}
 
-      if (!optionVals.find(checkCategory)) {
-        addCategory(category.value);
-      }
+function loadTodoList() {
+  let newLi: HTMLLIElement;
+  let newText: Text;
+  let newSpan: HTMLSpanElement;
+  let done: HTMLButtonElement;
+  let todoListLen: number;
 
-      function checkCategory(optionVal: string) {
-        return optionVal === category.value;
-      }
+  Object.keys(localStorage).forEach(key => {
+    todoListLen = document.getElementById("todoList").getElementsByTagName("LI").length;
+    newLi = (<HTMLLIElement>document.createElement("li"));
+    newText = document.createTextNode(localStorage.getItem(key));
+    done = document.createElement("button");
+    done.appendChild(document.createTextNode("Done"));
+    done.addEventListener("click", markDone);
+    newSpan = document.createElement("span");
+    newSpan.appendChild(done);
+    newSpan.classList.add("close");
+    newLi.appendChild(newText);
+    newLi.appendChild(newSpan);
+    todoList.insertBefore(newLi, todoList.childNodes[todoListLen - 1]);
 
-      let newLi: HTMLLIElement = (<HTMLLIElement>document.createElement("li"));
-      let newText: Text = document.createTextNode(descShort.value);
-
-      newLi.appendChild(newText);
-      todoList.appendChild(newLi);
-
-      var done = document.createElement("button");
-      done.appendChild(document.createTextNode("Done"));
-      newLi.appendChild(done);
-      done.addEventListener("click", markDone);
-
-      function markDone() {
-        newLi.classList.toggle("strikeThrough");
-      }
-
-      var delBtn = document.createElement("button");
-      delBtn.appendChild(document.createTextNode("Delete"));
-      newLi.appendChild(delBtn);
-      delBtn.addEventListener("click", deleteListItem);
-
-      function deleteListItem() {
-        newLi.classList.add("delete");
-      }
-
-      newLi.classList.toggle("selected");
-      showCat.innerHTML = "Category: " + category.value;
-      showDesc.innerHTML = "Description: " + descLong.value;
-      clearInput();
+    function markDone() {
+      newLi.classList.toggle("strikeThrough");
     }
-  }
-}
 
-function addCategory(toAdd: string) {
-alert("Adding category " + toAdd)
-}
+    function deleteListItem() {
+      newLi.classList.add("delete");
+    }
 
-function getCategoryList() {
-  for (let index = 0; index < options.length; index++) {
-    optionVals.push(options[index].value);
-  }
+  });
 }
 
 function clearInput() {
-  category.value = "";
-  descShort.value = "";
-  descLong.value = "";
+  todoItem.value = "";
+  todoItem.focus();
+}
+
+function filterView() {
+
 }
