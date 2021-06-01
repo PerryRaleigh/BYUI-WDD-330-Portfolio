@@ -1,5 +1,9 @@
 const links = [
   {
+    label: "Mid-Term Todo Challenge",
+    url: "challenge1-todo-list/todoList.html"
+  },
+  {
     label: "Week01 notes",
     url: "week01/index.html"
   },
