@@ -9,10 +9,22 @@
 
   <body>
     <div>
-       <p id="jsonRaw"></p> 
+       <p id="jsonRaw">
+        <table id="characterTable" class="tableBorder" style="width:100%; padding: 25px;">
+          <thead>
+            <tr>
+              <th class="tableBorder">Character</th>
+              <th class="tableBorder">Display Details</th>
+            </tr>
+          </thead>
+          <tbody id="characterTableBody">
+          </tbody>
+        </table>
+      </p> 
     </div>
   </body>
 
-  <script src="TeamW08.js"></script>
+  <script src="starwars.js"></script>
+  <script>getPeople()</script>
 
   </html>
