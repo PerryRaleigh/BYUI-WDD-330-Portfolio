@@ -9,6 +9,7 @@ var firstRun = true;  // Used to determine the first time run
 async function getInitial() {
   // use fetch to get a response object
   // then retrieve the JSON data object
+  console.log(apiStringInitial);
   const response = await fetch(apiStringInitial);
   const jsonData = await response.json();
 
