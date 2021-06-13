@@ -81,12 +81,15 @@ function loadTable(jsonData) {
   // It's embedded in this function so it can be added 
   // as an event listener and have the ability to pull 
   // the button id from the button that is clicked
-  function displayDetails() {
-    alert(`Details for < ${this.id} > is comming soon!`);
+  function displayDetails(event) {
+	  
+    document.getElementById('detailsModal').style.display='block';
+	fetch(event.target.id)
+	.then(response => response.json())
+	.then(results => { console.table(results); parseResults(results)})
   }
-
-
-
+  
+ 
   // if the api next string is null, disable the button
   if (apiStringNext === null) {
     document.getElementById("btnNext").disabled = true;
@@ -103,6 +106,29 @@ function loadTable(jsonData) {
 
 }
 
+function parseResults(results)
+{
+	desiredDetails = [{'name':'Name'},{'gender':'Gender'},{'height': 'Height'}, {'mass': 'Mass'},{'birth_year':'Birth Year'}]
+	
+	const details = document.getElementById('details');
+	details.innerHTML = "";
+	
+	for( var i = 0; i < desiredDetails.length; i++)
+	{
+		for (var key in desiredDetails[i])
+		{
+			var elm = document.createElement('p');
+			elm.innerHTML = desiredDetails[i][key] + " - " + (results[key]);
+			details.appendChild(elm);
+		}
+	}
+	
+}
+
+ function closeDetails()
+  {
+	   document.getElementById('detailsModal').style.display='none';
+  }
 
 // Only do this on the first run
 if (firstRun) {
