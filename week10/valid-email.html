@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Valid Email</title>
+    <meta name="description" content="Valid email">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./valid-email.css">
+    <script src="./valid-email.js" async defer></script>
+  </head>
+  <body>
+    <form>
+      <p>
+        <label for="mail">
+            <span>Please enter an email address:</span>
+            <input type="text" id="mail" name="mail">
+            <span class="error" aria-live="polite"></span>
+        </label>
+      </p>
+      <!-- Some legacy browsers need to have the `type` attribute
+           explicitly set to `submit` on the `button`element -->
+      <button type="submit">Submit</button>
+    </form>
+    
+
+  </body>
+</html>
