@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Weather Forcast</title>
+  <meta name="description" content="Weather forcast">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="./css/weatherForcast.css">
+</head>
+
+<body>
+
+  <div class="jumbotron text-center">
+    <h1>Weather Forcast</h1>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <h3>Office Location</h3>
+        <label for="officeLocation">Select An Office Location</label><br>
+        <select id="officeLocation">
+          <option value="none" selected disabled hidden>Select An Office</option>
+        </select>
+        <input type="button" value="Get The Forcast" onclick="getForcast()"><br>
+      </div>
+      <div class="col-md-8">
+        <h3>The Forcast</h3>
+        <p id="forcastParagraph">
+        <table id="forcastTable" class="tableBorder" style="width:100%">
+          <thead>
+            <tr>
+              <th class="tableBorder">Period</th>
+              <th class="tableBorder">Forcast</th>
+              <th class="tableBorder">Temp</th>
+            </tr>
+          </thead>
+          <tbody id="forcastTableBody">
+          </tbody>
+        </table>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <p><b>Copyright &copy; 2021 Me</b></p>
+  </div>
+
+  <script src="./scripts/weatherForcast.js" async defer></script>
+</body>
+
+</html>

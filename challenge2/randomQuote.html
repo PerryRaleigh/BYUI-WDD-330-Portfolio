@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Random Quote</title>
+  <meta name="description" content="Random Quote">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="../css/randomQuote.css">
+</head>
+
+<body>
+
+  <div class="jumbotron text-center">
+    <h1>Retrieve a Random Quote</h1>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <h3>The Size of The Quote</h3>
+        <label for="quoteSize">Select the size quote to retrieve:</label>
+        <select id="quoteSize">
+          <option value=small>Small</option>
+          <option value=medium>Medium</option>
+          <option value=large>Large</option>
+        </select><br><br>
+        <input type="button" value="Get The Quote" onclick="getQuote()">
+      </div>
+      <div class="col-sm-4">
+        <h3>The Quote</h3>
+        <p id="showTheQuote"></p>
+        <p id="showTheAuthor"></p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <p><b>Copyright &copy; 2021 Me</b></p>
+  </div>
+
+  <script src="../scripts/randomQuote.js" async defer></script>
+</body>
+
+</html>
