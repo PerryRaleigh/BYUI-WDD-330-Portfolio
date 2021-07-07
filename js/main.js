@@ -60,7 +60,7 @@ const links = [
     url: "week14/index.html"
   },
   {
-    label: "Mid-Term Todo Challenge",
+    label: "Final Project",
     url: "challenge2/countryInformation.html"
   }
 ]
