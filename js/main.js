@@ -58,6 +58,10 @@ const links = [
   {
     label: "Week14 notes",
     url: "week14/index.html"
+  },
+  {
+    label: "Mid-Term Todo Challenge",
+    url: "challenge2/countryInformation.html"
   }
 ]
 
