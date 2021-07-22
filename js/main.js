@@ -61,7 +61,7 @@ const links = [
   },
   {
     label: "Final Project",
-    url: "hhttps://wdd330final.raleighfamily.com/"
+    url: "https://wdd330final.raleighfamily.com/"
   }
 ]
 
