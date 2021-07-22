@@ -61,7 +61,7 @@ const links = [
   },
   {
     label: "Final Project",
-    url: "challenge2/countryInformation.html"
+    url: "hhttps://wdd330final.raleighfamily.com/"
   }
 ]
 
